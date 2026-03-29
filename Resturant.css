@@ -1,7 +1,10 @@
 /* General Styles */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Segoe UI', sans-serif; }
+body { scroll-behavior: smooth; color: #444; background-color: #fff9fb; overflow-x: hidden; }
+
+/* 1. Header & Navigation */
 .navbar {
     display: flex;
-    flex-direction: row;        
     justify-content: space-between; 
     align-items: center;
     padding: 1rem 5%;
@@ -12,34 +15,16 @@
     z-index: 1000;
 }
 
-.logo { 
-    font-size: 1.8rem; 
-    font-weight: bold; 
-    color: #d63384; 
-    white-space: nowrap;        
-}
+.logo { font-size: 1.8rem; font-weight: bold; color: #d63384; white-space: nowrap; }
+.logo span { color: #ff85a1; }
 
-.nav-links { 
-    display: flex; 
-    list-style: none;
-    flex-direction: row;        
-    gap: 20px;                  
-}
-
-.nav-links li a { 
-    text-decoration: none; 
-    color: #555; 
-    font-weight: 500; 
-    transition: 0.3s; 
-}
-
-.nav-links li a:hover { 
-    color: #d63384; 
-}
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links li a { text-decoration: none; color: #555; font-weight: 500; transition: 0.3s; }
+.nav-links li a:hover { color: #d63384; }
 
 /* 2. Hero Section */
 .hero {
-    height: 80vh;
+    height: 60vh;
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
@@ -48,127 +33,59 @@
     justify-content: center;
     color: white;
     text-align: center;
+    padding: 0 20px;
 }
-.hero h1 { font-size: 4rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+.hero h1 { font-size: clamp(2rem, 8vw, 4rem); text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
-/* 3. Menu Cards  */
-.menu-section { padding: 80px 5%; text-align: center; }
-.menu-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* This makes images uniform */
-    border-radius: 8px;
-    margin-bottom: 15px;
+/* 3. Menu Section - Horizontal on Large Screens */
+.menu-section { padding: 60px 5%; text-align: center; }
+.menu-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping for responsiveness */
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
 }
 .menu-card {
     background: white;
-    border: none;
     padding: 15px;
     width: 300px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: 0.3s;
 }
-.menu-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(214, 51, 132, 0.15); }
+.menu-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
 
 /* 4. Gallery Slider */
-.slider {
-    width: 100%;
-    max-width: 800px;
-    margin: 40px auto;
-    overflow: hidden;
-    border: 5px solid white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-.slides {
-    display: flex;
-    width: 600%; 
-    animation: slide 18s infinite;
-}
-.slides img { 
-    width: 100%; 
-    height: 450px; 
-    object-fit: cover; /* Ensures all 6 gallery photos look identical in size */
-}
+.slider { width: 100%; max-width: 800px; margin: 40px auto; overflow: hidden; border: 5px solid white; border-radius: 10px; }
+.slides { display: flex; width: 600%; animation: slide 18s infinite; }
+.slides img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
 
 @keyframes slide {
     0% { transform: translateX(0); }
-    16% { transform: translateX(-100%); }
-    33% { transform: translateX(-200%); }
+    16.6% { transform: translateX(-100%); }
+    33.3% { transform: translateX(-200%); }
     50% { transform: translateX(-300%); }
-    66% { transform: translateX(-400%); }
-    83% { transform: translateX(-500%); }
+    66.6% { transform: translateX(-400%); }
+    83.3% { transform: translateX(-500%); }
     100% { transform: translateX(0); }
 }
 
-.contact-section {
-    padding: 80px 5%;
-    background-color: #fff;
-    text-align: center;
-}
+/* 6. Contact Section */
+.contact-section { padding: 60px 5%; text-align: center; background-color: #fff; }
+.contact-container { display: flex; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: 0 auto; }
+.map-box, .form-box { flex: 1; min-width: 300px; border-radius: 15px; overflow: hidden; }
+.form-box { text-align: left; background: #fff9fb; padding: 30px; }
+.input-group { margin-bottom: 15px; }
+.input-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; }
 
-.contact-section h2 {
-    margin-bottom: 40px;
-    color: #d63384;
-}
-
-.contact-container {
-    display: flex;
-    gap: 40px;
-    max-width: 1100px;
-    margin: 0 auto;
-    align-items: flex-start;
-}
-
-.map-box {
-    flex: 1;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.form-box {
-    flex: 1;
-    text-align: left;
-    background: #fff9fb;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(214, 51, 132, 0.05);
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #555;
-}
-
-.contact-form input, 
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    outline: none;
-}
-
-.contact-form input:focus, 
-.contact-form textarea:focus {
-    border-color: #d63384;
-}
-
-/* I realized I had to Mobile Tweak it for Contact Section (Stacks the map and form) */
+/* PART 2: Mobile-Friendly Design (Media Queries) */
 @media (max-width: 768px) {
-    .contact-container {
-        flex-direction: column;
-    }
-    
-    .map-box, .form-box {
-        width: 100%;
-    }
+    .navbar { flex-direction: column; padding: 1rem; }
+    .nav-links { margin-top: 15px; gap: 10px; font-size: 0.9rem; }
+    .menu-grid { flex-direction: column; align-items: center; } /* Stacks menu items */
+    .menu-card { width: 90%; }
+    .contact-container { flex-direction: column; }
+    .map-box, .form-box { width: 100%; min-width: unset; }
 }
